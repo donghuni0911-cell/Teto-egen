@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테토/에겐 판별기</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 헤더 -->
+    <header class="header">
+      <h1>💪🌸 테토/에겐 판별기</h1>
+      <p class="subtitle">내 말투로 알아보는 테토력 · 에겐력</p>
+    </header>
+
+    <main class="main-content">
+      <!-- 입력 카드 -->
+      <section class="card input-card">
+        <label for="inputText" class="input-label">문장이나 자기소개를 입력해 주세요</label>
+        <textarea id="inputText" rows="5" placeholder="예) 일단 해보고 생각하자. 고민은 짧게, 실행은 빠르게!"></textarea>
+
+        <div class="input-sub">
+          <div class="example-buttons">
+            <span class="example-label">예시:</span>
+            <button type="button" class="example-btn" data-example="1">직진형</button>
+            <button type="button" class="example-btn" data-example="2">감성형</button>
+            <button type="button" class="example-btn" data-example="3">반반형</button>
+          </div>
+          <span id="charCount" class="char-count">0 / 500</span>
+        </div>
+
+        <!-- 오류 안내 영역 (평소엔 숨김) -->
+        <div id="errorBox" class="error-box" role="alert" hidden>
+          <span class="error-icon" aria-hidden="true">⚠️</span>
+          <span id="errorMessage" class="error-text"></span>
+        </div>
+
+        <button type="button" id="analyzeBtn" class="primary-btn">분석하기</button>
+      </section>
+
+      <!-- 결과 카드 (평소엔 숨김) -->
+      <section id="resultCard" class="card result-card" aria-live="polite" hidden>
+        <div id="resultEmoji" class="result-emoji">💪</div>
+        <h2 id="resultLabel" class="result-label">테토형</h2>
+
+        <div class="confidence-section">
+          <div class="confidence-header">
+            <span class="section-title">신뢰도</span>
+            <span id="confidenceValue" class="confidence-value">0%</span>
+          </div>
+          <div id="confidenceBar" class="confidence-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="confidenceFill" class="confidence-fill"></div>
+          </div>
+        </div>
+
+        <div class="reasons-section">
+          <span class="section-title">판단 근거</span>
+          <ul id="reasonList" class="reason-list"></ul>
+        </div>
+
+        <div class="summary-box">
+          <p id="summaryText" class="summary-text"></p>
+        </div>
+
+        <p class="notice">ⓘ 재미로 보는 결과예요</p>
+
+        <button type="button" id="retryBtn" class="secondary-btn">다시 하기</button>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <p>입력한 문장은 저장되지 않아요 · AI 분석 결과는 정확하지 않을 수 있어요</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
